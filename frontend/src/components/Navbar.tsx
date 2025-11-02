@@ -11,7 +11,7 @@ export default function Header() {
   const navItems = ["전체", "유머/이슈", "정치", "경제", "암호화폐", "스포츠", "연애", "IT", "기타"];
 
   return (
-    <header className="bg-emerald-500 text-white shadow-sm">
+    <nav className="bg-emerald-500 text-white shadow-sm">
       <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-3">
         {/* Logo */}
         <Link href="/" className="text-2xl font-bold">
@@ -91,6 +91,6 @@ export default function Header() {
           </div>
         </div>
       )}
-    </header>
+    </nav>
   );
 }
