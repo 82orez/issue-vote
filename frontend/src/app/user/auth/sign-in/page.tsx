@@ -91,9 +91,9 @@ export default function LoginPage() {
 
         {/* 회원가입 / 비밀번호 재설정 */}
         <div className="mt-5 flex justify-center gap-8 text-sm text-gray-700">
-          <button type="button" className="hover:underline">
+          <Link href={"/user/auth/sign-up"} className="hover:underline">
             이메일 회원가입
-          </button>
+          </Link>
           <span className="text-gray-300">|</span>
           <button type="button" className="hover:underline">
             비밀번호 재설정
@@ -108,25 +108,5 @@ export default function LoginPage() {
         </div>
       </div>
     </div>
-  );
-}
-
-/* 간단한 눈 아이콘들 (외부 라이브러리 없이 사용) */
-function EyeIcon() {
-  return (
-    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
-      <circle cx="12" cy="12" r="3" />
-    </svg>
-  );
-}
-
-function EyeOffIcon() {
-  return (
-    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
-      <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a18.45 18.45 0 0 1 5.06-5.94" />
-      <path d="M9.88 9.88A3 3 0 0 0 12 15a3 3 0 0 0 2.12-.88" />
-      <path d="M1 1l22 22" />
-    </svg>
   );
 }
