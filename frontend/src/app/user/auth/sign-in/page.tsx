@@ -18,8 +18,8 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#f5f5f7] px-4">
-      <div className="w-full max-w-md rounded-3xl bg-white px-8 py-10 shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
+    <div className="my-10 flex justify-center px-4">
+      <div className="w-full max-w-sm rounded-3xl bg-white px-8 py-10 shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
         {/* 제목 */}
         <h1 className="mb-8 text-center text-2xl font-bold text-neutral-900">회원가입 및 로그인 하기</h1>
 
