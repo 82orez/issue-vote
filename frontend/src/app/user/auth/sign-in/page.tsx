@@ -1,67 +1,130 @@
-// app/login/page.tsx (예시)
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
+import { BiSolidMessageRounded } from "react-icons/bi";
 
 export default function LoginPage() {
+  const [email, setEmail] = useState("");
+  const [password, setPassword] = useState("");
+  const [showPassword, setShowPassword] = useState(false);
+
+  const handleSubmit = (e: React.FormEvent) => {
+    e.preventDefault();
+    // TODO: 실제 로그인 로직 추가
+    console.log({ email, password });
+  };
+
   return (
-    <div className="flex min-h-screen items-center justify-center bg-[#fafafa]">
-      <div className="w-full max-w-[320px]">
-        {/* 상단 카드 (로그인 폼) */}
-        <div className="border border-gray-300 bg-white px-10 pt-10 pb-6">
-          {/* 로고 텍스트 */}
-          <h1
-            className="mb-8 text-center text-5xl font-semibold tracking-tight"
-            style={{
-              fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif',
-            }}>
-            Instagram
-          </h1>
+    <div className="flex min-h-screen items-center justify-center bg-[#f5f5f7] px-4">
+      <div className="w-full max-w-md rounded-3xl bg-white px-8 py-10 shadow-[0_20px_60px_rgba(15,23,42,0.12)]">
+        {/* 제목 */}
+        <h1 className="mb-8 text-center text-2xl font-bold text-neutral-900">회원가입 및 로그인 하기</h1>
 
-          {/* 입력 폼 */}
-          <form className="space-y-3">
-            <input
-              type="text"
-              placeholder="전화번호, 사용자 이름 또는 이메일"
-              className="w-full rounded-sm border border-gray-300 bg-[#fafafa] px-2.5 py-2 text-xs focus:border-gray-400 focus:outline-none"
-            />
-            <input
-              type="password"
-              placeholder="비밀번호"
-              className="w-full rounded-sm border border-gray-300 bg-[#fafafa] px-2.5 py-2 text-xs focus:border-gray-400 focus:outline-none"
-            />
-
-            <button type="submit" className="mt-2 w-full rounded-lg bg-[#0095f6] py-2 text-sm font-semibold text-white disabled:opacity-50">
-              로그인
-            </button>
-          </form>
-
-          {/* 또는 구분선 */}
-          <div className="my-8 flex items-center">
-            <div className="h-px flex-1 bg-gray-300" />
-            <span className="px-4 text-xs font-semibold text-gray-500">또는</span>
-            <div className="h-px flex-1 bg-gray-300" />
+        {/* 카카오 시작 버튼 */}
+        <button
+          type="button"
+          // onClick={handleClickKakao}
+          // disabled={isKakaoLoading || isLoading}
+          className="mb-7 flex w-full items-center rounded-md border bg-yellow-300 px-10 py-2 text-center font-semibold hover:bg-yellow-400 disabled:opacity-50 md:px-11">
+          {/*{isKakaoLoading ? <AiOutlineLoading3Quarters className={"animate-spin"} /> : <BiSolidMessageRounded size={22} />}*/}
+          <BiSolidMessageRounded size={22} />
+          <div className={"grow"} style={{ color: "rgba(0, 0, 0, 0.85)" }}>
+            카카오로 시작하기
           </div>
+        </button>
 
-          {/* Facebook 로그인 */}
-          <button type="button" className="flex w-full items-center justify-center gap-2 text-sm font-semibold text-[#385185]">
-            <span className="inline-flex h-5 w-5 items-center justify-center rounded-full bg-[#385185] text-xs font-bold text-white">f</span>
-            <span>Facebook으로 로그인</span>
-          </button>
-
-          {/* 비밀번호 찾기 */}
-          <div className="mt-4 text-center">
-            <a href="#" className="text-xs text-[#00376b]">
-              비밀번호를 잊으셨나요?
-            </a>
-          </div>
+        {/* 구분선 */}
+        <div className="mb-6 flex items-center text-sm text-gray-400">
+          <div className="h-px flex-1 bg-gray-200" />
+          <span className="px-3">또는 이메일로 로그인</span>
+          <div className="h-px flex-1 bg-gray-200" />
         </div>
 
-        {/* 하단 카드 (가입하기) */}
-        <div className="mt-4 border border-gray-300 bg-white py-4 text-center text-sm">
-          <span className="mr-1">계정이 없으신가요?</span>
-          <a href="#" className="font-semibold text-[#0095f6]">
-            가입하기
-          </a>
+        {/* 폼 */}
+        <form onSubmit={handleSubmit} className="space-y-5">
+          {/* 이메일 */}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-gray-800">Email</label>
+            <input
+              type="email"
+              value={email}
+              onChange={(e) => setEmail(e.target.value)}
+              placeholder="example@email.com"
+              className="w-full rounded-xl border border-gray-200 bg-[#eef3ff] px-4 py-3 text-[15px] text-gray-900 transition outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40"
+            />
+          </div>
+
+          {/* 비밀번호 */}
+          <div className="space-y-1.5">
+            <label className="text-sm font-medium text-gray-800">Password</label>
+            <div className="relative">
+              <input
+                type={showPassword ? "text" : "password"}
+                value={password}
+                onChange={(e) => setPassword(e.target.value)}
+                placeholder="비밀번호를 입력하세요"
+                className="w-full rounded-xl border border-gray-200 bg-[#eef3ff] px-4 py-3 pr-11 text-[15px] text-gray-900 transition outline-none focus:border-blue-500 focus:ring-2 focus:ring-blue-500/40"
+              />
+              {/* 비밀번호 보기/가리기 아이콘 (텍스트가 있을 때만 표시) */}
+              {password.length > 0 && (
+                <button
+                  type="button"
+                  onClick={() => setShowPassword((prev) => !prev)}
+                  className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
+                  aria-label="비밀번호 보기/가리기">
+                  {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                </button>
+              )}
+            </div>
+          </div>
+
+          {/* 이메일 로그인 버튼 */}
+          <button
+            type="submit"
+            className="mt-1 w-full rounded-xl bg-[#2557ff] py-3 text-[15px] font-semibold text-white transition hover:bg-[#1740d8]">
+            Email 로그인
+          </button>
+        </form>
+
+        {/* 회원가입 / 비밀번호 재설정 */}
+        <div className="mt-5 flex justify-center gap-8 text-sm text-gray-700">
+          <button type="button" className="hover:underline">
+            이메일 회원가입
+          </button>
+          <span className="text-gray-300">|</span>
+          <button type="button" className="hover:underline">
+            비밀번호 재설정
+          </button>
+        </div>
+
+        {/* Back to Home */}
+        <div className="mt-8 text-center text-[15px] text-gray-900">
+          <Link href="/" className="hover:underline">
+            Back to Home
+          </Link>
         </div>
       </div>
     </div>
+  );
+}
+
+/* 간단한 눈 아이콘들 (외부 라이브러리 없이 사용) */
+function EyeIcon() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M1 12s4-7 11-7 11 7 11 7-4 7-11 7S1 12 1 12z" />
+      <circle cx="12" cy="12" r="3" />
+    </svg>
+  );
+}
+
+function EyeOffIcon() {
+  return (
+    <svg className="h-5 w-5" viewBox="0 0 24 24" fill="none" stroke="currentColor" strokeWidth="2">
+      <path d="M17.94 17.94A10.94 10.94 0 0 1 12 19c-7 0-11-7-11-7a18.45 18.45 0 0 1 5.06-5.94" />
+      <path d="M9.88 9.88A3 3 0 0 0 12 15a3 3 0 0 0 2.12-.88" />
+      <path d="M1 1l22 22" />
+    </svg>
   );
 }
