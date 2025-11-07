@@ -3,6 +3,8 @@
 import { useState } from "react";
 import Link from "next/link";
 import { BiSolidMessageRounded } from "react-icons/bi";
+import { GoEye } from "react-icons/go";
+import { PiEyeClosed } from "react-icons/pi";
 
 export default function LoginPage() {
   const [email, setEmail] = useState("");
@@ -73,7 +75,7 @@ export default function LoginPage() {
                   onClick={() => setShowPassword((prev) => !prev)}
                   className="absolute inset-y-0 right-3 flex items-center text-gray-500 hover:text-gray-700"
                   aria-label="비밀번호 보기/가리기">
-                  {showPassword ? <EyeOffIcon /> : <EyeIcon />}
+                  {showPassword ? <GoEye size={22} /> : <PiEyeClosed size={22} />}
                 </button>
               )}
             </div>
